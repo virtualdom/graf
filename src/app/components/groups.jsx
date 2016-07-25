@@ -1,9 +1,29 @@
-const React = require('react');
+import { Card, CardTitle, CardText, CardMedia } from 'material-ui/Card';
+import React from 'react';
+import ThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-class Dashboard extends React.Component {
+import DatePickers from './date-pickers.jsx';
+import GroupPicker from './group-picker.jsx';
+import GroupTable from './group-table.jsx';
+
+class Groups extends React.Component {
   render () {
-    return <p>Groups</p>;
+    return (
+      <div>
+        <ThemeProvider>
+          <Card>
+            <CardTitle title={<GroupPicker />} />
+            <CardText>
+              <DatePickers />
+            </CardText>
+            <CardMedia>
+              <GroupTable />
+            </CardMedia>
+          </Card>
+        </ThemeProvider>
+      </div>
+    );
   }
 }
 
-module.exports = Dashboard;
+module.exports = Groups;

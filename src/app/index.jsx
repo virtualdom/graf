@@ -1,6 +1,6 @@
-const React = require('react');
-const { render } = require('react-dom');
+import React from 'react';
+import { render } from 'react-dom';
 
-const RouterComponent = require('./router/index.jsx');
+import RouterComponent from './router/index.jsx';
 
 render(<RouterComponent />, document.getElementById('app'));
