@@ -4,8 +4,11 @@
   "description": "The front-end of the graf application.",
   "author": "Dominic Joseph <dtpjoseph@gmail.com> (http://www.dominicjoseph.io)",
   "dependencies": {
+    "chart.js": "^1.1.1",
     "material-ui": "^0.15.2",
+    "moment": "^2.14.1",
     "react": "^15.2.1",
+    "react-chartjs": "^0.7.3",
     "react-dom": "^15.2.1",
     "react-router": "^2.5.2",
     "react-tap-event-plugin": "^1.0.0"

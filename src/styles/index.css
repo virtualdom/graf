@@ -1,3 +1,38 @@
 body {
   margin: 0;
 }
+
+.errorPage {
+  text-align: center;
+}
+
+.errorPage * {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+.pageContents {
+  margin: 10px auto 100px auto;
+  width: 680px;
+}
+
+.floatButtons {
+  position: fixed;
+  right: calc((100% - 680px) / 2);
+  bottom: 20px;
+}
+
+.floatButton {
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 680px) {
+  .pageContents {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .floatButtons {
+    right: 0;
+  }
+}
