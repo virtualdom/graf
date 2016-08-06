@@ -4,6 +4,16 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 class GroupTable extends React.Component {
 
   render () {
+    const members = Object.keys(this.props.group);
+    const rows = members.map((member) => {
+      return (
+        <TableRow key={member}>
+          <TableRowColumn>{member}</TableRowColumn>
+          <TableRowColumn>{this.props.group[member]}</TableRowColumn>
+        </TableRow>
+      );
+    });
+
     return (
       <Table>
         <TableHeader displaySelectAll={false}>
@@ -13,28 +23,11 @@ class GroupTable extends React.Component {
           </TableRow>
         </TableHeader>
         <TableBody displayRowCheckbox={false} adjustForCheckbox={false}>
-          <TableRow>
-            <TableRowColumn>John Smith</TableRowColumn>
-            <TableRowColumn>3</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn>Randal White</TableRowColumn>
-            <TableRowColumn>3</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn>Stephanie Sanders</TableRowColumn>
-            <TableRowColumn>3</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn>Steve Brown</TableRowColumn>
-            <TableRowColumn>3</TableRowColumn>
-          </TableRow>
+          {rows}
         </TableBody>
       </Table>
     );
   }
 }
-
-
 
 module.exports = GroupTable;

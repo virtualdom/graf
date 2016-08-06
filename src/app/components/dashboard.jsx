@@ -1,12 +1,13 @@
 import React from 'react';
 
-import {Card, CardMedia} from 'material-ui/Card';
+import { Card, CardMedia } from 'material-ui/Card';
 import ThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import CheckInButtons from './check-in-buttons.jsx';
-import Checkmarks from './checkmarks.jsx';
 import Inspiration from './inspiration.jsx';
-import WorkoutChart from './workout-chart.jsx';
+
+import CheckInButtons from '../containers/check-in-buttons';
+import Checkmarks from '../containers/checkmarks';
+import WorkoutChart from '../containers/workout-chart';
 
 class Dashboard extends React.Component {
   render () {

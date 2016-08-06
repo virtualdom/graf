@@ -11,7 +11,7 @@ const chartData = {
     pointStrokeColor: '#fff',
     pointHighlightFill: '#fff',
     pointHighlightStroke: '#00B3FE',
-    data: [0, 10, 20, 0]
+    data: [0, 0, 0, 0]
   }]
 };
 
@@ -21,6 +21,7 @@ const chartOptions = {
 
 class WorkoutChart extends React.Component {
   render() {
+    chartData.datasets[0].data = this.props.chartData;
     return <LineChart data={chartData} options={chartOptions} width='600' height='250'/>;
   }
 }
