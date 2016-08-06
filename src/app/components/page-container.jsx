@@ -14,7 +14,9 @@ injectTapEventPlugin();
 class PageContainer extends React.Component {
   render () {
     const joinGroup = () => {
-      return this.props.addGroup(prompt('What shall the new group be named?'));
+      const groupName = prompt('What shall the new group be named?');
+      if (groupName && groupName.trim())
+        return this.props.addGroup(groupName);
     };
 
     const menuRouteMap = {
