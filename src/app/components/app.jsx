@@ -1,77 +1,29 @@
 import React from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import { Link, hashHistory } from 'react-router';
+import {
+  Router,
+  Route,
+  hashHistory,
+  IndexRoute
+} from 'react-router';
 
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import Menu from 'material-ui/svg-icons/navigation/menu';
-import MenuItem from 'material-ui/MenuItem';
-import ThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import PageContainer from '../containers/page-container';
 
-injectTapEventPlugin();
-
-const menuRouteMap = {
-  Dashboard: {
-    link: true,
-    route: ''
-  },
-  Groups: {
-    link: true,
-    route: 'groups'
-  },
-  'Join Group': {
-    link: false,
-    action: joinGroup
-  },
-  'Sign Out': {
-    link: true,
-    route: 'signout'
-  }
-};
-
-function joinGroup () {
-  const newGroup = prompt('What shall the new group be named?');
-  alert(newGroup);
-}
-
-function navigate (event, menuItem) {
-  if (menuRouteMap[menuItem.props.primaryText].link)
-    hashHistory.push(menuRouteMap[menuItem.props.primaryText].route);
-  else menuRouteMap[menuItem.props.primaryText].action();
-}
+import Dashboard from './dashboard.jsx';
+import Groups from './groups.jsx';
+import ErrorPage from './error-page.jsx';
 
 class App extends React.Component {
   render () {
     return (
-      <div>
-        <ThemeProvider>
-          <AppBar
-          title='Graf'
-          showMenuIconButton={false}
-          iconElementRight={
-            <IconMenu
-              iconButtonElement={<IconButton><Menu /></IconButton>}
-              targetOrigin={{horizontal: 'right', vertical: 'top'}}
-              anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-              onItemTouchTap={navigate}
-            >
-              <MenuItem primaryText='Dashboard' />
-              <MenuItem primaryText='Groups' />
-              <MenuItem primaryText='Join Group' />
-              <MenuItem primaryText='Sign Out' />
-            </IconMenu>
-          }
-          style={{backgroundColor: '#02A8F3'}}
-        />
-        </ThemeProvider>
-        <div className={'pageContents'}>
-          {this.props.children}
-        </div>
-      </div>
+      <Router history={ hashHistory }>
+        <Route path='/' component={ PageContainer }>
+          <IndexRoute component={ Dashboard }/>
+          <Route path='groups' component={ Groups }/>
+          <Route path='*' component={ ErrorPage }/>
+        </Route>
+      </Router>
     );
   }
 }
 
 module.exports = App;
-

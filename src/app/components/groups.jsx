@@ -2,9 +2,9 @@ import { Card, CardTitle, CardText, CardMedia } from 'material-ui/Card';
 import React from 'react';
 import ThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import DatePickers from './date-pickers.jsx';
-import GroupPicker from './group-picker.jsx';
-import GroupTable from './group-table.jsx';
+import DatePickers from '../containers/date-pickers';
+import GroupPicker from '../containers/group-picker';
+import GroupTable from '../containers/group-table';
 
 class Groups extends React.Component {
   render () {
