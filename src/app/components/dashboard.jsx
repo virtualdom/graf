@@ -1,4 +1,5 @@
 import React from 'react';
+import { hashHistory } from 'react-router';
 
 import { Card, CardMedia } from 'material-ui/Card';
 import ThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -11,6 +12,11 @@ import WorkoutChart from '../containers/workout-chart';
 
 class Dashboard extends React.Component {
   render () {
+    if (!this.props.username || !this.props.authorization) {
+      hashHistory.push('/login');
+      this.props.clear();
+    }
+
     return (
       <div>
         <ThemeProvider>

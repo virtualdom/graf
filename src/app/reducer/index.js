@@ -1,27 +1,17 @@
 import { List, Map } from 'immutable';
 import Moment from 'moment';
 
-const groups = {
-  ['Group 1']: {
-    sally: 6,
-    pally: 3,
-    tally: 1
-  },
-  ['Group 2']: {
-    brock: 10,
-    doc: 0,
-    rock: 8
-  }
-};
-
 const defaultState = Map({
+  authHeader: '',
+  username: '',
+  loginError: null,
   startDate: Moment().startOf('week').toDate(),
   endDate: Moment().endOf('week').toDate(),
   workouts: 0,
   chartData: List([0, 0, 0, 0]),
   dailyquote: '',
-  selectedGroup: 'Group 1',
-  groupTable: Map(groups)
+  selectedGroup: '',
+  groupTable: Map({})
 });
 
 function incrementWorkouts (state) {
@@ -50,6 +40,18 @@ function changeEndDate (state, newDate) {
   return state.set('endDate', newDate);
 }
 
+function login (state, loginCreds) {
+  return state.set('username', loginCreds.username).set('authHeader', btoa(`${loginCreds.username}:${loginCreds.password}`));
+}
+
+function signup (state, loginCreds) {
+  return state.set('username', loginCreds.username).set('authHeader', btoa(`${loginCreds.username}:${loginCreds.password}`));
+}
+
+function logout (state) {
+  return state.set('username', '').set('authHeader', '');
+}
+
 export default (state = defaultState, action) => {
   switch(action.type) {
     case 'ADD_WORKOUT':
@@ -64,6 +66,12 @@ export default (state = defaultState, action) => {
       return changeStartDate(state, action.payload);
     case 'CHANGE_END_DATE':
       return changeEndDate(state, action.payload);
+    case 'SIGN_UP':
+      return signup(state, action.payload);
+    case 'LOG_IN':
+      return login(state, action.payload);
+    case 'LOG_OUT':
+      return logout(state);
     default:
       return state;
   }

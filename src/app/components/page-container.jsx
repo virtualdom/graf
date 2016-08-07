@@ -33,8 +33,8 @@ class PageContainer extends React.Component {
         action: joinGroup
       },
       'Sign Out': {
-        link: true,
-        route: 'signout'
+        link: false,
+        action: this.props.signOut
       }
     };
 
