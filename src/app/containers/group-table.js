@@ -5,7 +5,7 @@ import GroupTable from '../components/group-table.jsx';
 module.exports = connect(
   function mapStateToProps (state) {
     return {
-      group: state.get('groupTable').get(state.get('selectedGroup'))
+      group: state.get('groupTable').get(state.get('selectedGroup')) || {}
     };
   },
   function mapDispatchToProps (dispatch) {

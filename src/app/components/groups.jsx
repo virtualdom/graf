@@ -1,5 +1,6 @@
 import { Card, CardTitle, CardText, CardMedia } from 'material-ui/Card';
 import React from 'react';
+import { hashHistory } from 'react-router';
 import ThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import DatePickers from '../containers/date-pickers';
@@ -8,6 +9,11 @@ import GroupTable from '../containers/group-table';
 
 class Groups extends React.Component {
   render () {
+    if (!this.props.username || !this.props.authorization) {
+      hashHistory.push('/login');
+      this.props.clear();
+    }
+
     return (
       <div>
         <ThemeProvider>
