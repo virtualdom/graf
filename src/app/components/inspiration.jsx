@@ -1,14 +1,17 @@
 import React from 'react';
 
-import {Card, CardTitle} from 'material-ui/Card';
+import { Card, CardTitle } from 'material-ui/Card';
+import CircularProgress from 'material-ui/CircularProgress';
 import ThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Inspiration extends React.Component {
   render () {
+    const quote = this.props.loading ? (<CircularProgress />) : (<CardTitle title={this.props.dailyQuote.quote} subtitle={`- ${this.props.dailyQuote.author}`} />);
+
     return (
       <ThemeProvider>
         <Card>
-          <CardTitle title={'"If at first you don\'t succeed, eat some ice cream!"'} subtitle={'- Dom'} />
+          {quote}
         </Card>
       </ThemeProvider>
     )

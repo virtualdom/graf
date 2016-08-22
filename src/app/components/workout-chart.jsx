@@ -15,9 +15,7 @@ const chartData = {
   }]
 };
 
-const chartOptions = {
-  responsive: true
-};
+const chartOptions = { responsive: true };
 
 class WorkoutChart extends React.Component {
   render() {

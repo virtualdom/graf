@@ -16,7 +16,7 @@ class Checkmarks extends React.Component {
 
     return (
       <div>
-        <CardTitle title={`${Count.toWords(this.props.workouts || 0)} workouts this week`} />
+        <CardTitle title={`${Count.toWords(this.props.workouts || 0)} ${ this.props.workouts === 1 ? 'workout' : 'workouts' } this week`} />
         <CardText>
           {checkmarks}
         </CardText>

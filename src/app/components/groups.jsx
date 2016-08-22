@@ -9,11 +9,6 @@ import GroupTable from '../containers/group-table';
 
 class Groups extends React.Component {
   render () {
-    if (!this.props.username || !this.props.authorization) {
-      hashHistory.push('/login');
-      this.props.clear();
-    }
-
     return (
       <div>
         <ThemeProvider>

@@ -6,19 +6,18 @@ import {
   IndexRoute
 } from 'react-router';
 
-import Dashboard from '../containers/dashboard';
-import Groups from '../containers/groups';
 import Login from '../containers/login';
 import PageContainer from '../containers/page-container';
 
+import Dashboard from './dashboard.jsx';
 import ErrorPage from './error-page.jsx';
+import Groups from './groups.jsx';
 
 class App extends React.Component {
   render () {
     return (
       <Router history={ hashHistory }>
-        <Route path='login' component={ Login } />
-        <Route path='/' component={ PageContainer }>
+        <Route path='/' component={ PageContainer } >
           <IndexRoute component={ Dashboard } />
           <Route path='groups' component={ Groups } />
           <Route path='*' component={ ErrorPage } />
@@ -27,5 +26,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 module.exports = App;

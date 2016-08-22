@@ -1,11 +1,13 @@
 import React from 'react';
+
+import CircularProgress from 'material-ui/CircularProgress';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
 class GroupTable extends React.Component {
 
   render () {
     const members = Object.keys(this.props.group);
-    const rows = members.map((member) => {
+    var rows = members.map((member) => {
       return (
         <TableRow key={member}>
           <TableRowColumn>{member}</TableRowColumn>
@@ -13,6 +15,8 @@ class GroupTable extends React.Component {
         </TableRow>
       );
     });
+
+    if (this.props.loading) rows = (<CircularProgress />);
 
     return (
       <Table>

@@ -7,7 +7,6 @@ import Minus from 'material-ui/svg-icons/content/remove';
 
 class CheckInButtons extends React.Component {
   render() {
-
     const { add, remove } = this.props;
 
     return (
